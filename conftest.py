@@ -6,12 +6,27 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from utilities.screenshot import take_screenshot
 from utilities.logger import get_logger
+from selenium.webdriver.chrome.options import Options
+
+
+
 
 logger = get_logger(__name__)
 
-
 @pytest.fixture
 def driver(request):
+    
+    options = Options()
+    options.add_argument("--incognito")
+
+    options.add_experimental_option(
+        "prefs",
+        {
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False
+        }
+    )
+
     
     logger.info("Creating Chrome WebDriver")
 
@@ -20,7 +35,8 @@ def driver(request):
     )
 
     driver = webdriver.Chrome(
-        service=service
+        service=service,
+        options = options
     )
 
     driver.maximize_window()

@@ -108,3 +108,4 @@ class InventoryPage:
         self.wait.until(
             EC.element_to_be_clickable(self.LOGOUT_BUTTON)
         ).click()
+        # print("After logout click:", self.driver.current_url)

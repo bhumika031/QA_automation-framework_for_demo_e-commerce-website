@@ -6,3 +6,5 @@ logs/
 reports/
 screenshots/
 .pytest_cache/
+first.py
+explicit_wait_demo.py
