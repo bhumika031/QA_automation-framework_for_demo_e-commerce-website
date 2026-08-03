@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from utilities.logger import get_logger
 
 class CartPage:
 
@@ -13,8 +13,10 @@ class CartPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
+        self.logger = get_logger(__name__)
 
     def get_item_names(self):
+        self.logger.info("Getting items from the cart")
 
         elements = self.driver.find_elements(*self.ITEM_NAMES)
 
@@ -27,6 +29,8 @@ class CartPage:
         )
 
     def remove_product(self, product_name):
+        
+        self.logger.info("Removing product from cart")
 
         locator = (
             By.XPATH,

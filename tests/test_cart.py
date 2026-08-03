@@ -4,9 +4,15 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 
+from utilities.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 @pytest.mark.smoke
 def test_cart_contains_added_product(driver):
+    
+    logger.info("Start testing cart contained product")
 
     login_page = LoginPage(driver)
     inventory_page = InventoryPage(driver)
@@ -30,6 +36,8 @@ def test_cart_contains_added_product(driver):
 
 @pytest.mark.regression
 def test_cart_item_count(driver):
+    
+    logger.info("Start testing cart item counts ")
 
     login_page = LoginPage(driver)
     inventory_page = InventoryPage(driver)
@@ -55,6 +63,8 @@ def test_cart_item_count(driver):
 
 @pytest.mark.regression
 def test_remove_product_from_cart(driver):
+    
+    logger.info("Start testing removing product from cart")
 
     login_page = LoginPage(driver)
     inventory_page = InventoryPage(driver)

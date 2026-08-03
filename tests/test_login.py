@@ -1,10 +1,13 @@
 import pytest
 
 from pages.login_page import LoginPage
+from utilities.logger import get_logger
 
+logger = get_logger(__name__)
 
 @pytest.mark.smoke
 def test_valid_login(driver):
+    logger.info("Start testing valid login")
 
     login_page = LoginPage(driver)
 
@@ -18,6 +21,7 @@ def test_valid_login(driver):
 
 @pytest.mark.regression
 def test_invalid_username(driver):
+    logger.info("Start testing invalid login")
 
     login_page = LoginPage(driver)
 
@@ -33,6 +37,7 @@ def test_invalid_username(driver):
 
 @pytest.mark.regression
 def test_empty_username(driver):
+    logger.info("Start testing empty username")
 
     login_page = LoginPage(driver)
 
@@ -48,6 +53,7 @@ def test_empty_username(driver):
 
 @pytest.mark.regression
 def test_empty_password(driver):
+    logger.info("Start testing empty password")
 
     login_page = LoginPage(driver)
 
@@ -63,6 +69,7 @@ def test_empty_password(driver):
 
 @pytest.mark.regression
 def test_locked_out_user(driver):
+    logger.info("Start testing locked out user")
 
     login_page = LoginPage(driver)
 

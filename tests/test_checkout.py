@@ -4,6 +4,9 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
+from utilities.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 def prepare_checkout(driver):
@@ -30,6 +33,8 @@ def prepare_checkout(driver):
 
 @pytest.mark.smoke
 def test_successful_checkout(driver):
+    
+    logger.info("Start testing sucessful checkout")
 
     checkout_page = prepare_checkout(driver)
 
@@ -56,6 +61,8 @@ def test_successful_checkout(driver):
 
 @pytest.mark.regression
 def test_checkout_without_first_name(driver):
+    
+    logger.info("Start testing without first name ")
 
     checkout_page = prepare_checkout(driver)
 
@@ -74,6 +81,8 @@ def test_checkout_without_first_name(driver):
 
 @pytest.mark.regression
 def test_checkout_without_last_name(driver):
+    
+    logger.info("Start testing checkout without last name ")
 
     checkout_page = prepare_checkout(driver)
 
@@ -92,6 +101,8 @@ def test_checkout_without_last_name(driver):
 
 @pytest.mark.regression
 def test_checkout_without_postal_code(driver):
+    
+    logger.info("Start testing checkout without postal-code")
 
     checkout_page = prepare_checkout(driver)
 

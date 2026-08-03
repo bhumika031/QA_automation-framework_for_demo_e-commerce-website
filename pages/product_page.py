@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utilities.logger import get_logger
 
 
 class ProductPage:
@@ -13,8 +14,11 @@ class ProductPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
+        self.logger = get_logger(__name__)
 
     def open_product(self, product_name):
+        
+        self.logger.info(f"Open Product : {product_name}")
 
         locator = (
             By.XPATH,

@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from utilities.logger import get_logger
 
 class LoginPage:
 
@@ -13,11 +13,13 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
+        self.logger = get_logger(__name__)
 
     def enter_username(self, username):
         element = self.wait.until(
             EC.visibility_of_element_located(self.USERNAME)
         )
+        self.logger.info("Entering username")
         element.clear()
         element.send_keys(username)
 
@@ -25,10 +27,12 @@ class LoginPage:
         element = self.wait.until(
             EC.visibility_of_element_located(self.PASSWORD)
         )
+        self.logger.info("Entering password")
         element.clear()
         element.send_keys(password)
 
     def click_login(self):
+        self.logger.info("Clicking login button")
         self.wait.until(
             EC.element_to_be_clickable(self.LOGIN_BUTTON)
         ).click()
@@ -37,8 +41,10 @@ class LoginPage:
         self.enter_username(username)
         self.enter_password(password)
         self.click_login()
+        self.logger.info("Starting login")
 
     def get_error_message(self):
+        self.logger.info("Reading login error message")
         return self.wait.until(
             EC.visibility_of_element_located(self.ERROR_MESSAGE)
         ).text

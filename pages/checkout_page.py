@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from utilities.logger import get_logger
 
 class CheckoutPage:
 
@@ -20,6 +20,7 @@ class CheckoutPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
+        self.logger = get_logger(__name__)
 
     def enter_first_name(self, first_name):
 
@@ -40,7 +41,7 @@ class CheckoutPage:
         element.send_keys(last_name)
 
     def enter_postal_code(self, postal_code):
-
+        self.logger.info("Entering the details...")
         element = self.wait.until(
             EC.visibility_of_element_located(self.POSTAL_CODE)
         )
@@ -54,6 +55,8 @@ class CheckoutPage:
         last_name,
         postal_code
     ):
+        
+        self.logger.info("Entering checkout information")
 
         self.enter_first_name(first_name)
         self.enter_last_name(last_name)
@@ -66,6 +69,8 @@ class CheckoutPage:
         ).click()
 
     def click_finish(self):
+        
+        self.logger.info("Completing checkout")
 
         self.wait.until(
             EC.element_to_be_clickable(self.FINISH_BUTTON)

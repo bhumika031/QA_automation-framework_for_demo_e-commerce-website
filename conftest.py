@@ -5,10 +5,15 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 from utilities.screenshot import take_screenshot
+from utilities.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 @pytest.fixture
 def driver(request):
+    
+    logger.info("Creating Chrome WebDriver")
 
     service = Service(
         ChromeDriverManager().install()
@@ -19,10 +24,13 @@ def driver(request):
     )
 
     driver.maximize_window()
+    logger.info("Chrome browser started")
 
     driver.get(
         "https://www.saucedemo.com/"
     )
+    logger.info("SauceDemo opened")
+    
 
     yield driver
 
@@ -34,6 +42,8 @@ def driver(request):
                 driver,
                 request.node.name
             )
+    
+    logger.info("Closing Chrome WebDriver")
 
     driver.quit()
 

@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
-
+from utilities.logger import get_logger
 
 class InventoryPage:
 
@@ -21,6 +21,7 @@ class InventoryPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
+        self.logger = get_logger(__name__)
 
     def get_page_title(self):
         return self.wait.until(
@@ -36,6 +37,8 @@ class InventoryPage:
         return [float(element.text.replace("$", "")) for element in elements]
 
     def add_product_to_cart(self, product_name):
+        
+        self.logger.info("Adding product to cart")
 
         product = self.wait.until(
             EC.presence_of_element_located(
@@ -51,6 +54,8 @@ class InventoryPage:
         product.click()
 
     def remove_product_from_cart(self, product_name):
+        
+        self.logger.info("Removing product from cart")
 
         product = self.wait.until(
             EC.presence_of_element_located(
@@ -75,6 +80,8 @@ class InventoryPage:
         return int(elements[0].text)
 
     def open_cart(self):
+        
+        self.logger.info("Opening cart")
 
         self.wait.until(
             EC.element_to_be_clickable(self.CART)
