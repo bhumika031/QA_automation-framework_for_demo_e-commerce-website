@@ -1,6 +1,0 @@
-venv/
-__pycashe__/
-.pytest_cashe/
-screenshots/
-reports/
-*.pyc/

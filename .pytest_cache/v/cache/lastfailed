@@ -1,6 +1,0 @@
-{
-  "first_test.py": true,
-  "tests/test_checkout.py::test_successful_checkout": true,
-  "tests/test_checkout.py::test_checkout_without_postal_code": true,
-  "tests/test_logout.py::test_logout": true
-}
