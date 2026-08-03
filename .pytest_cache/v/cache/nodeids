@@ -1,0 +1,22 @@
+[
+  "tests/test_cart.py::test_cart_contains_added_product",
+  "tests/test_cart.py::test_cart_item_count",
+  "tests/test_cart.py::test_remove_product_from_cart",
+  "tests/test_checkout.py::test_checkout_without_first_name",
+  "tests/test_checkout.py::test_checkout_without_last_name",
+  "tests/test_checkout.py::test_checkout_without_postal_code",
+  "tests/test_checkout.py::test_successful_checkout",
+  "tests/test_inventory.py::test_add_product_to_cart",
+  "tests/test_inventory.py::test_inventory_page_displayed",
+  "tests/test_inventory.py::test_products_are_displayed",
+  "tests/test_inventory.py::test_remove_product_from_cart",
+  "tests/test_inventory.py::test_sort_products_low_to_high",
+  "tests/test_login.py::test_empty_password",
+  "tests/test_login.py::test_empty_username",
+  "tests/test_login.py::test_invalid_username",
+  "tests/test_login.py::test_locked_out_user",
+  "tests/test_login.py::test_login",
+  "tests/test_login.py::test_valid_login",
+  "tests/test_logout.py::test_logout",
+  "tests/test_product.py::test_open_product_details"
+]
